@@ -1,10 +1,11 @@
-module example.com/hello
+module github.com/gopherschool/http-rest-api
 
 go 1.16
 
 require (
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
+	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
-	github.com/jinzhu/gorm v1.9.16 // indirect
-	github.com/joho/godotenv v1.3.0 // indirect
+	github.com/sabhiram/go-gitignore v0.0.0-20201211210132-54b8a0bf510f // indirect
+	github.com/sirupsen/logrus v1.8.1 // indirect
+	github.com/stretchr/testify v1.7.0 // indirect
 )
