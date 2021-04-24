@@ -25,7 +25,7 @@ func (u *User) Validate() error {
 		),
 		validation.Field(
 			&u.Password,
-			validation.Required,
+			validation.By(requiredIf(u.EncryptedPassword == "")),
 			validation.Length(6, 100),
 		),
 	)
