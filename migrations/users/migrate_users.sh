@@ -1,0 +1,1 @@
+migrate -path migrations -database "postgres://localhost/restapi_dev?sslmode=disable" up
