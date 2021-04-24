@@ -1,23 +1,18 @@
-package sqlstore
+package teststore
 
 import (
-	"database/sql"
-
+	"github.com/gopherschool/http-rest-api/internal/app/model"
 	"github.com/gopherschool/http-rest-api/internal/app/store"
-	_ "github.com/lib/pq" //...
 )
 
 //Store is ...
 type Store struct {
-	db             *sql.DB
 	userRepository *UserRepository
 }
 
 //New is ...
-func New(db *sql.DB) *Store {
-	return &Store{
-		db: db,
-	}
+func New() *Store {
+	return &Store{}
 }
 
 //User is ...
@@ -28,6 +23,7 @@ func (s *Store) User() store.UserRepository {
 
 	s.userRepository = &UserRepository{
 		store: s,
+		users: make(map[string]*model.User),
 	}
 
 	return s.userRepository

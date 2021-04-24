@@ -1,29 +1,25 @@
-package sqlstore_test
+package teststore_test
 
 import (
 	"testing"
 
+	"github.com/gopherschool/http-rest-api/internal/app/store"
+
 	"github.com/stretchr/testify/assert"
 
 	"github.com/gopherschool/http-rest-api/internal/app/model"
-	"github.com/gopherschool/http-rest-api/internal/app/store"
-	"github.com/gopherschool/http-rest-api/internal/app/store/sqlstore"
+	"github.com/gopherschool/http-rest-api/internal/app/store/teststore"
 )
 
 func TestUserRepository_Create(t *testing.T) {
-	db, tearDown := sqlstore.TestDB(t, databaseURL)
-	defer tearDown("users")
-	s := sqlstore.New(db)
+	s := teststore.New()
 	u := model.TestUser(t)
 	assert.NoError(t, s.User().Create(u))
 	assert.NotNil(t, u)
 }
 
 func TestUserRepository_FindByEmail(t *testing.T) {
-	db, tearDown := sqlstore.TestDB(t, databaseURL)
-	defer tearDown("users")
-
-	s := sqlstore.New(db)
+	s := teststore.New()
 	email := "user@example.org"
 	_, err := s.User().FindByEmail(email)
 	assert.EqualError(t, err, store.ErrRecorcNotFound.Error())
