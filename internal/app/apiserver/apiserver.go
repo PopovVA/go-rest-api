@@ -4,19 +4,22 @@ import (
 	"database/sql"
 	"net/http"
 
+	"github.com/gorilla/sessions"
+
 	"github.com/gopherschool/http-rest-api/internal/app/store/sqlstore"
 )
 
 //Start ...
 func Start(config *Config) error {
-	db, err := newDB(config.dataBaseURL)
+	db, err := newDB(config.DataBaseURL)
 	if err != nil {
 		return err
 	}
 	defer db.Close()
 
 	store := sqlstore.New(db)
-	srv := newServer(store)
+	sessionStore := sessions.NewCookieStore([]byte(config.SessionKey))
+	srv := newServer(store, sessionStore)
 
 	return http.ListenAndServe(config.BindAddr, srv)
 }
