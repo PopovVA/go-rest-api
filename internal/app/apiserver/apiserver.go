@@ -9,7 +9,7 @@ import (
 
 //Start ...
 func Start(config *Config) error {
-	db, err := newDB(config.dataBaseURL)
+	db, err := newDB(config.DataBaseURL)
 	if err != nil {
 		return err
 	}
