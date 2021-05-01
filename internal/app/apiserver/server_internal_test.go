@@ -7,6 +7,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/gorilla/sessions"
+
 	"github.com/gopherschool/http-rest-api/internal/app/model"
 
 	"github.com/stretchr/testify/assert"
@@ -15,7 +17,7 @@ import (
 )
 
 func TestServer_handleUsersCreate(t *testing.T) {
-	s := newServer(teststore.New())
+	s := newServer(teststore.New(), sessions.NewCookieStore([]byte("secret")))
 	testCases := []struct {
 		name         string
 		payload      interface{}
@@ -60,7 +62,7 @@ func TestServer_handleSessionsCreate(t *testing.T) {
 	u := model.TestUser(t)
 	store := teststore.New()
 	store.User().Create(u)
-	s := newServer(store)
+	s := newServer(store, sessions.NewCookieStore([]byte("secret")))
 	testCases := []struct {
 		name         string
 		payload      interface{}
