@@ -36,6 +36,11 @@ func (u *User) Sanitaze() {
 	u.Password = ""
 }
 
+//ComparePassword is ...
+func (u *User) ComparePassword(password string) bool {
+	return bcrypt.CompareHashAndPassword([]byte(u.EncryptedPassword), []byte(password)) == nil
+}
+
 //BeforeCreate ...
 func (u *User) BeforeCreate() error {
 	if len(u.Password) > 0 {
