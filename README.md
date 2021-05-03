@@ -1,3 +1,3 @@
 # go-rest-api
 
-Simgle go rest api
+Simple go rest api
