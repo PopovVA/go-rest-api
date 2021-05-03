@@ -40,15 +40,15 @@ sh run.sh
 
 ```
 Request {
-	"email": "example@example.org",
-    "password": "123456789"
+  "email": "example@example.org",
+  "password": "123456789"
 }
 ```
 
 ```
 Response {
-	"id":1,
-	"email":"example1@example.org"
+  "id":1,
+  "email":"example1@example.org"
 }
 ```
 
@@ -56,15 +56,15 @@ Response {
 
 ```
 Request {
-	"email": "example@example.org",
-    "password": "123456789"
+  "email": "example@example.org",
+  "password": "123456789"
 }
 ```
 
 ```
 Response 200 Headers {
-	Set-Cookie: gosession=MTYyMDA2MzQxN3...,
-	X-Request-ID: 6b46b5f6-7447-4c9c-8fe7-1bca6b079002,
-	...
+  Set-Cookie: gosession=MTYyMDA2MzQxN3...,
+  X-Request-ID: 6b46b5f6-7447-4c9c-8fe7-1bca6b079002,
+  ...etc
 }
 ```
