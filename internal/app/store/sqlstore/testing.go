@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-//TestDB is ...
+//TestDB checks if the database is working fine
 func TestDB(t *testing.T, databaseURL string) (*sql.DB, func(...string)) {
 	t.Helper()
 

@@ -7,12 +7,12 @@ import (
 	"github.com/gopherschool/http-rest-api/internal/app/store"
 )
 
-//UserRepository ...
+//UserRepository contains store ref and crud methods
 type UserRepository struct {
 	store *Store
 }
 
-//Create is ..
+//Create user in the postgres database
 func (r *UserRepository) Create(u *model.User) error {
 	if err := u.Validate(); err != nil {
 		return err
@@ -28,7 +28,7 @@ func (r *UserRepository) Create(u *model.User) error {
 	).Scan(&u.ID)
 }
 
-//FindByEmail is ..
+//FindByEmail returns User by email
 func (r *UserRepository) FindByEmail(email string) (*model.User, error) {
 	u := &model.User{}
 	if err := r.store.db.QueryRow(
@@ -48,7 +48,7 @@ func (r *UserRepository) FindByEmail(email string) (*model.User, error) {
 	return u, nil
 }
 
-//Find is ..
+//Find returns User by ID
 func (r *UserRepository) Find(id int) (*model.User, error) {
 	u := &model.User{}
 	if err := r.store.db.QueryRow(

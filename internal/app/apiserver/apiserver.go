@@ -9,7 +9,7 @@ import (
 	"github.com/gopherschool/http-rest-api/internal/app/store/sqlstore"
 )
 
-//Start ...
+//Start database by config
 func Start(config *Config) error {
 	db, err := newDB(config.DataBaseURL)
 	if err != nil {
@@ -24,6 +24,7 @@ func Start(config *Config) error {
 	return http.ListenAndServe(config.BindAddr, srv)
 }
 
+//Open database
 func newDB(databaseURL string) (*sql.DB, error) {
 	db, err := sql.Open("postgres", databaseURL)
 
