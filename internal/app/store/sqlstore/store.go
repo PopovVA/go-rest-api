@@ -13,14 +13,14 @@ type Store struct {
 	userRepository *UserRepository
 }
 
-//New is ...
+//New Store create
 func New(db *sql.DB) *Store {
 	return &Store{
 		db: db,
 	}
 }
 
-//User is ...
+//User helps get user from repository
 func (s *Store) User() store.UserRepository {
 	if s.userRepository != nil {
 		return s.userRepository

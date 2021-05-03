@@ -3,6 +3,6 @@ package store
 import "errors"
 
 var (
-	//ErrRecorcNotFound ...
+	//ErrRecorcNotFound when record not found in a database
 	ErrRecorcNotFound = errors.New("record not found")
 )

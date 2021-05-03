@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-//TestUser ...
+//TestUser is simple user for unit tests
 func TestUser(t *testing.T) *User {
 	return &User{
 		Email:    "user@example.org",
